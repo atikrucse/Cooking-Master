@@ -1,0 +1,73 @@
+*{
+    border: 0;
+    margin: 0;
+}
+body{
+    background-color: burlywood;
+}
+
+.search-bar{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+.search-box{
+border: 1px solid black;
+height: 30px;
+width: 300px;
+}
+.search-btn{
+border: none;
+background-color: crimson;
+color: white;
+}
+
+#search-result-container{
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.meal-div{
+    overflow: hidden;
+    border-radius: 20px;
+    text-align: center;
+    
+}
+#ingredient{
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.meal-image img{
+    display: block;
+    height: 200px;
+    width: 100%;
+}
+#ingredient-image img{
+    display: block;
+    height: 200px;
+    width: 100%;
+}
+
+.meal-info{
+    background-color: #fff;
+}
+
+#ingredient-container{
+    /* background-color: blanchedalmond; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    width: 40%;
+    overflow: hidden;
+    display: none;
+}
+
+#ingredient-list{
+    background-color: white;
+    overflow: hidden;
+}
