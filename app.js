@@ -6,23 +6,28 @@ searchBtn.addEventListener('click', function () {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchKey}`)
         .then(res => res.json())
         .then(data => {
+            //console.log(data.meals);
 
-            data.meals.forEach(meal => {
-                const mealDiv = document.createElement('div');
-                const mealInfo = `
-                <div class="meal-div" data-id = "${meal.idMeal}">
-                    <div class="meal-image">
-                    <img src="${meal.strMealThumb}">
+            if (data.meals) {
+                data.meals.forEach(meal => {
+                    const mealDiv = document.createElement('div');
+                    const mealInfo = `
+                    <div class="meal-div" data-id = "${meal.idMeal}">
+                        <div class="meal-image">
+                        <img src="${meal.strMealThumb}">
+                        </div>
+                        <div class="meal-info">
+                            <h3>${meal.strMeal}</h3>
+                            <button id="ingredientBtn">Click anywhere to get Ingredients</button>
+                        </div>
                     </div>
-                    <div class="meal-info">
-                        <h3>${meal.strMeal}</h3>
-                        <button id="ingredientBtn">Get Ingredients</button>
-                    </div>
-                </div>
-           `;
-                mealDiv.innerHTML = mealInfo;
-                searchResultContainer.appendChild(mealDiv);
-            });
+               `;
+                    mealDiv.innerHTML = mealInfo;
+                    searchResultContainer.appendChild(mealDiv);
+                });
+            }else{
+               window.alert("Search Keyword didn't match. Please Enter Valid Ingredients.");
+            }
 
         })
 
@@ -56,7 +61,11 @@ searchResultContainer.addEventListener('click', function (event) {
                 <div id="ingredient-image">
                     <img src="${meal.strMealThumb}">
                 </div>
-                <ul id="ingredient-list">
+                
+                <div id="ingredient-list">
+                    <h3>${meal.strMeal}</h3>
+                    <h4>Ingredients:</h4>
+                    <ul>
                     <li>${meal.strIngredient1}</li>
                     <li>${meal.strIngredient2}</li>
                     <li>${meal.strIngredient3}</li>
@@ -67,7 +76,8 @@ searchResultContainer.addEventListener('click', function (event) {
                     <li>${meal.strIngredient8}</li>
                     <li>${meal.strIngredient9}</li>
                     <li>${meal.strIngredient10}</li>
-                </ul>    
+                    </ul>
+                </div>    
             </div>
                
             `;
